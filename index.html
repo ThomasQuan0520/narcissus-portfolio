@@ -6,7 +6,7 @@
     <title>水仙的作品集 | Portfolio (3.4.1)</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
     /* =========================================
@@ -22,19 +22,14 @@
         --retro-shadow: 6px 6px 0px rgba(0,0,0,0.8), 6px 6px 0px 2px var(--retro-red);
     }
 
-    * {
-        font-family: 'Press Start 2P', monospace !important;
-        border-radius: 0 !important;
-        letter-spacing: 0 !important;
-        box-sizing: border-box;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
     body {
         margin: 0;
         background: var(--retro-black);
         color: var(--retro-red);
         overflow-x: hidden;
-        text-transform: uppercase;
+        font-family: 'Space Grotesk', sans-serif;
     }
 
     #ascii-canvas {
@@ -318,6 +313,317 @@
         #home-social-links { justify-content: flex-start !important; }
         #home-social-links a { font-size: 0.56rem; }
     }
+
+    /* Contemporary portfolio art direction */
+    :root {
+        --retro-red: #ed725f;
+        --retro-bright-red: #ff9a83;
+        --retro-black: #101112;
+        --retro-dark: #191b1d;
+        --retro-border: 1px solid rgba(255,255,255,.12);
+        --retro-dashed: 1px solid rgba(255,255,255,.12);
+        --retro-shadow: none;
+        --page-width: 1440px;
+        --page-gutter: clamp(22px, 5vw, 76px);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+        min-height: 100vh;
+        background: radial-gradient(ellipse at 76% 0%, rgba(105,62,50,.16), transparent 38%), #101112;
+        color: #f1f0ec;
+        font-family: 'Space Grotesk', sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+    }
+    #ascii-canvas { opacity: .025; }
+    .crt-overlay, #loading-overlay { display: none !important; }
+
+    header {
+        width: min(100%, 1600px);
+        margin-inline: auto;
+        padding: clamp(30px, 5vw, 68px) var(--page-gutter) 26px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        align-items: end;
+        gap: 30px;
+        text-align: left;
+        color: #f1f0ec;
+    }
+    .ascii-title {
+        position: relative;
+        min-height: 0;
+        margin: 0;
+        color: #f1f0ec;
+        font-size: clamp(2.45rem, 6vw, 5.5rem) !important;
+        font-weight: 600;
+        line-height: .98;
+        letter-spacing: -.075em !important;
+        text-align: left;
+    }
+    .ascii-title::before {
+        content: 'THOMAS QUAN  /  CREATIVE PORTFOLIO';
+        display: block;
+        margin-bottom: 16px;
+        color: var(--retro-red);
+        font: 500 .68rem/1.2 'DM Mono', monospace;
+        letter-spacing: .12em;
+    }
+    nav {
+        max-width: none;
+        margin: 0 0 5px;
+        padding: 0;
+        justify-content: flex-end;
+        gap: 6px;
+    }
+    nav a {
+        border: 1px solid transparent;
+        border-radius: 999px;
+        padding: 10px 16px;
+        background: transparent;
+        box-shadow: none;
+        color: #aaa9a5;
+        font: 500 .8rem/1 'DM Mono', monospace !important;
+        letter-spacing: 0;
+        transition: color .2s ease, background .2s ease, border-color .2s ease !important;
+    }
+    nav a:hover::before, nav a:hover::after { content: none; }
+    nav a:hover, nav a.active {
+        color: #111;
+        background: #f1f0ec;
+        border-color: #f1f0ec;
+        transform: none;
+        box-shadow: none;
+    }
+
+    .container {
+        width: min(100%, 1600px);
+        max-width: none;
+        padding: 0 var(--page-gutter) 78px;
+    }
+    .hero-frame, #home .hero-frame {
+        width: 100%;
+        max-width: 1360px;
+        aspect-ratio: 16 / 9;
+        margin: 0;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,.14) !important;
+        border-radius: 22px;
+        background: #191a1b;
+        box-shadow: 0 28px 80px rgba(0,0,0,.34);
+    }
+    .hero-frame video { opacity: .94 !important; }
+    .home-intro {
+        display: grid;
+        grid-template-columns: minmax(0, 1.2fr) minmax(250px, .8fr);
+        align-items: end;
+        gap: clamp(28px, 7vw, 110px);
+        margin-top: clamp(42px, 6vw, 84px);
+        padding: 0 0 clamp(34px, 5vw, 62px);
+        border-bottom: 1px solid rgba(255,255,255,.13);
+    }
+    .eyebrow {
+        margin-bottom: 16px;
+        color: var(--retro-red);
+        font: 500 .68rem/1.4 'DM Mono', monospace;
+        letter-spacing: .09em;
+        text-transform: uppercase;
+    }
+    .home-intro h2 {
+        margin: 0;
+        color: #f1f0ec;
+        font-size: clamp(2rem, 4.8vw, 4.25rem) !important;
+        font-weight: 500;
+        line-height: 1.04;
+        letter-spacing: -.065em;
+    }
+    .home-intro-copy p {
+        max-width: 34rem;
+        margin: 0;
+        color: #a7a6a2;
+        font-size: clamp(.98rem, 1.35vw, 1.13rem);
+        line-height: 1.85;
+    }
+    #home-social-links {
+        max-width: none;
+        margin: 24px 0 0 !important;
+        justify-content: flex-start !important;
+        gap: 9px !important;
+    }
+    #home-social-links a {
+        display: inline-flex;
+        min-height: 40px;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 13px;
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 999px;
+        background: rgba(255,255,255,.035);
+        box-shadow: none;
+        color: #d1d0cb;
+        font: 500 .65rem/1 'DM Mono', monospace;
+        letter-spacing: .025em;
+        transition: border-color .2s ease, background .2s ease, color .2s ease;
+    }
+    #home-social-links a:hover {
+        transform: none;
+        border-color: rgba(237,114,95,.6);
+        background: rgba(237,114,95,.1);
+        box-shadow: none;
+        color: #fff !important;
+    }
+    #home-social-links > div {
+        width: auto !important;
+        margin: 0 0 0 8px !important;
+        color: #a7a6a2 !important;
+        font: 400 .76rem 'DM Mono', monospace !important;
+        text-align: left !important;
+    }
+
+    #music > h2, #media > h2 {
+        margin: 0;
+        color: #f1f0ec;
+        font: 500 clamp(1.65rem, 3vw, 2.5rem)/1.1 'Space Grotesk', sans-serif !important;
+        letter-spacing: -.055em;
+        text-align: left !important;
+    }
+    .card-grid, #media .card-grid {
+        max-width: none;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(20px, 2.5vw, 38px);
+        margin: 32px 0 0;
+    }
+    .card {
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: #f1f0ec;
+        box-shadow: none;
+        cursor: pointer;
+        transition: transform .25s ease;
+    }
+    .card::before, .card::after { content: none !important; }
+    .card:hover {
+        transform: translateY(-4px);
+        border: 0;
+        background: transparent;
+        box-shadow: none;
+    }
+    .card-img-wrapper, .media-cover {
+        width: 100%;
+        margin: 0 0 16px;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,.11);
+        border-radius: 15px;
+        background: #191a1b;
+    }
+    .card-img-wrapper { aspect-ratio: 1 / 1; }
+    #media .media-cover { aspect-ratio: 16 / 10; }
+    #home .hero-frame { aspect-ratio: 16 / 9; }
+    .card img, .media-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform .55s cubic-bezier(.2,.7,.2,1);
+    }
+    .card:hover img { transform: scale(1.035); }
+    .card-title {
+        margin: 0 0 6px;
+        color: #f1f0ec;
+        font: 500 1rem/1.4 'Space Grotesk', sans-serif !important;
+        letter-spacing: -.015em;
+    }
+    .card-desc {
+        color: #898985;
+        font: 400 .7rem/1.5 'DM Mono', monospace !important;
+        letter-spacing: .025em;
+    }
+    footer {
+        padding: 28px var(--page-gutter) 36px;
+        color: #777873;
+        font: 400 .67rem/1.7 'DM Mono', monospace !important;
+        text-align: left;
+    }
+    footer > div {
+        display: block !important;
+        border-top: 1px solid rgba(255,255,255,.12) !important;
+        padding-top: 18px !important;
+    }
+
+    .lang-switcher {
+        right: 22px;
+        bottom: 20px;
+        gap: 3px;
+        padding: 4px;
+        border: 1px solid rgba(255,255,255,.13);
+        border-radius: 999px;
+        background: rgba(24,25,26,.88);
+        backdrop-filter: blur(16px);
+    }
+    .lang-switcher button {
+        border: 0;
+        border-radius: 999px;
+        padding: 8px 11px;
+        background: transparent;
+        box-shadow: none;
+        color: #aaa9a5;
+        font: 500 .65rem 'DM Mono', monospace !important;
+    }
+    .lang-switcher button.active { background: #eeeDE8; color: #171819; }
+    #music-status {
+        right: 22px !important;
+        bottom: 76px !important;
+        border: 1px solid rgba(255,255,255,.13) !important;
+        border-radius: 14px !important;
+        background: rgba(25,27,29,.94) !important;
+        box-shadow: 0 12px 36px rgba(0,0,0,.25) !important;
+        color: #eee !important;
+    }
+    input[type=range] { accent-color: var(--retro-red); }
+    #album-modal {
+        background: rgba(8,9,10,.76) !important;
+        backdrop-filter: blur(12px) !important;
+    }
+    #album-modal > div {
+        border: 1px solid rgba(255,255,255,.12) !important;
+        border-radius: 22px !important;
+        background: #191b1d !important;
+        box-shadow: 0 28px 90px rgba(0,0,0,.48) !important;
+        padding: clamp(26px, 5vw, 46px) !important;
+    }
+    #album-modal button { color: #aaa !important; }
+
+    @media (max-width: 900px) {
+        header { grid-template-columns: 1fr; align-items: start; gap: 24px; }
+        nav { justify-content: flex-start; margin: 0; }
+        .card-grid, #media .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 600px) {
+        :root { --page-gutter: 20px; }
+        header { padding-top: 30px; padding-bottom: 24px; gap: 22px; }
+        .ascii-title { font-size: clamp(2.25rem, 12vw, 3.6rem) !important; }
+        .ascii-title::before { margin-bottom: 13px; font-size: .58rem; }
+        nav { flex-wrap: nowrap; justify-content: flex-start; gap: 3px; }
+        nav a { flex: 0 0 auto; padding: 9px 13px; font-size: .68rem !important; }
+        .container { padding-bottom: 52px; }
+        .hero-frame, #home .hero-frame { border-radius: 14px; }
+        .home-intro { grid-template-columns: 1fr; gap: 20px; margin-top: 34px; padding-bottom: 30px; }
+        .home-intro h2 { font-size: clamp(2rem, 10vw, 3rem) !important; }
+        .home-intro-copy p { font-size: .95rem; }
+        #home-social-links { gap: 7px !important; }
+        #home-social-links a { min-height: 36px; padding: 8px 10px; font-size: .57rem; }
+        #home-social-links > div { width: 100% !important; margin: 8px 0 0 !important; }
+        .card-grid, #media .card-grid { gap: 22px 13px; }
+        .card-img-wrapper, .media-cover { margin-bottom: 11px; border-radius: 11px; }
+        .card-title { font-size: .9rem !important; }
+        .card-desc { font-size: .64rem !important; }
+        .lang-switcher { right: 12px; bottom: 12px; }
+        #music-status { right: 12px !important; bottom: 66px !important; }
+        footer { padding-top: 20px; }
+    }
     </style>
 </head>
 <body>
@@ -340,13 +646,12 @@
             <input id="music-status-progress" type="range" min="0" max="100" value="0" style="flex:1; vertical-align:middle;">
             <input id="music-status-volume" type="range" min="0" max="1" step="0.01" value="0.5" style="width:50px;vertical-align:middle;">
         </div>
-    </header>
-
     <nav>
         <a href="#" class="active" onclick="showSection('home', event)"><span class="nav-cn">主页</span><span class="nav-en" style="display:none;">Home</span></a>
         <a href="#" onclick="showSection('music', event)"><span class="nav-cn">音乐</span><span class="nav-en" style="display:none;">Music</span></a>
         <a href="#" onclick="showSection('media', event)"><span class="nav-cn">数字媒体</span><span class="nav-en" style="display:none;">Digital Media</span></a>
     </nav>
+    </header>
     
     <div class="lang-switcher">
         <button id="lang-cn">中文</button>
@@ -358,13 +663,16 @@
             <div class="stagger-item card-img-wrapper hero-frame">
                 <video src="video.mov" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover; opacity: 0.9;"></video>
             </div>
-            <div class="stagger-item" style="margin-top: 24px; border: 2px dashed var(--retro-red); padding: 20px; background: rgba(0,0,0,0.5);">
-                <div style="color:var(--retro-red); margin-bottom:10px;">// SYSTEM_MESSAGE: WELCOME</div>
-                <h2 style="font-size:1.2rem; margin-bottom: 16px;" class="home-cn">欢迎来到<br>我的作品集</h2>
-                <h2 style="font-size:1.2rem; display:none; margin-bottom: 16px;" class="home-en">Welcome to<br>My Portfolio</h2>
-                <p style="color:#aaa;font-size:0.8rem;max-width:600px; line-height: 1.6;" class="home-cn">这里展示了我在音乐、数字媒体和摄影领域的创作。点击上方导航，探索不同类别的作品。</p>
-                <p style="color:#aaa;font-size:0.8rem;max-width:600px;display:none; line-height: 1.6;" class="home-en">Here you can explore my creations in music, digital media, and photography. Click the navigation above.</p>
-                <div style="color:var(--retro-red); margin-top:10px;">// END_MESSAGE</div>
+            <div class="stagger-item home-intro">
+                <div class="home-intro-title">
+                    <div class="eyebrow">Independent artist · Music · Digital media</div>
+                    <h2 class="home-cn">欢迎来到我的作品集</h2>
+                    <h2 class="home-en" style="display:none;">Welcome to my portfolio</h2>
+                </div>
+                <div class="home-intro-copy">
+                    <p class="home-cn">这里展示了我在音乐、数字媒体和摄影领域的创作。点击上方导航，探索不同类别的作品。</p>
+                    <p class="home-en" style="display:none;">Explore my work across music, digital media, and photography.</p>
+                </div>
             </div>
             <div id="home-social-links" class="stagger-item" style="margin:32px 0 0 0;display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:center;">
                 <a href="https://www.youtube.com/@Narcissus0520" target="_blank" rel="noopener">
