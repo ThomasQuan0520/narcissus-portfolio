@@ -181,6 +181,143 @@
         #music-status { border-left: 0 !important; border-right: 0 !important; border-bottom: 0 !important; box-shadow: none !important; background: #000 !important;}
         .crt-overlay { display: none; }
     }
+
+    /* Responsive composition tuned for wide 16:9 screens. */
+    :root {
+        --page-width: 1280px;
+        --page-gutter: clamp(16px, 3vw, 40px);
+        --grid-gap: clamp(18px, 2vw, 30px);
+    }
+
+    header {
+        padding: clamp(24px, 5vh, 56px) var(--page-gutter) clamp(16px, 3vh, 30px);
+    }
+
+    .ascii-title {
+        font-size: clamp(1rem, 2.1vw, 1.65rem) !important;
+        letter-spacing: 0.06em !important;
+        margin-bottom: 0;
+    }
+
+    nav {
+        max-width: var(--page-width);
+        gap: clamp(8px, 1vw, 14px);
+        margin: 0 auto clamp(24px, 3.5vh, 42px);
+        padding-inline: var(--page-gutter);
+    }
+
+    nav a {
+        padding: 10px clamp(12px, 1.5vw, 20px);
+        line-height: 1.5;
+    }
+
+    .container {
+        width: min(100%, var(--page-width));
+        max-width: none;
+        padding: 0 var(--page-gutter) clamp(38px, 5vh, 64px);
+    }
+
+    .hero-frame {
+        width: min(100%, 1180px);
+        max-width: min(100%, calc((100vh - 300px) * 1.7778));
+        aspect-ratio: 16 / 9;
+        margin: 0 auto;
+        border: 2px solid var(--retro-red) !important;
+        box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.85), 8px 8px 0 2px var(--retro-red);
+    }
+
+    @supports (height: 100svh) {
+        .hero-frame { max-width: min(100%, calc((100svh - 300px) * 1.7778)); }
+    }
+
+    .card-grid {
+        grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+        gap: var(--grid-gap);
+        margin-top: clamp(24px, 3vw, 38px);
+    }
+
+    #media .card-grid {
+        max-width: 1200px;
+        margin-inline: auto;
+    }
+
+    .card {
+        padding: clamp(14px, 1.5vw, 20px);
+        border-width: 1px;
+        box-shadow: 5px 5px 0 rgba(0, 0, 0, 0.8), 5px 5px 0 1px var(--retro-red);
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .card-img-wrapper {
+        aspect-ratio: 1 / 1;
+    }
+
+    #home .hero-frame {
+        aspect-ratio: 16 / 9;
+    }
+
+    #media .media-cover {
+        aspect-ratio: 16 / 9;
+    }
+
+    .card-title {
+        font-size: clamp(0.78rem, 1vw, 0.95rem) !important;
+        line-height: 1.7;
+    }
+
+    .card-desc {
+        line-height: 1.7;
+    }
+
+    #home > .stagger-item:nth-child(2) {
+        max-width: 1180px;
+        margin-inline: auto;
+        padding: clamp(16px, 2vw, 26px) !important;
+        line-height: 1.8;
+    }
+
+    #home-social-links {
+        max-width: 1180px;
+        margin-inline: auto !important;
+        gap: clamp(8px, 1vw, 14px) !important;
+    }
+
+    #home-social-links a {
+        padding: 10px 12px;
+        font-size: 0.68rem;
+    }
+
+    footer {
+        padding: 24px var(--page-gutter) 32px;
+        line-height: 1.8;
+    }
+
+    .lang-switcher {
+        right: clamp(12px, 2vw, 24px);
+        bottom: clamp(12px, 2vw, 24px);
+    }
+
+    @media (max-width: 768px) {
+        header { padding-top: 28px; }
+        nav { margin-bottom: 24px; }
+        .container { padding-bottom: 40px; }
+        .hero-frame { max-width: 100%; }
+        .card-grid,
+        #media .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+        .card { margin-bottom: 0; }
+        .card-title { font-size: 0.7rem !important; }
+        #home-social-links a { font-size: 0.58rem; padding: 8px; }
+    }
+
+    @media (max-width: 480px) {
+        .card-grid,
+        #media .card-grid { grid-template-columns: 1fr; }
+        nav a { font-size: 0.65rem !important; padding: 8px 10px; }
+        .ascii-title { font-size: 0.9rem !important; }
+        #home > .stagger-item:nth-child(2) { padding: 15px !important; }
+        #home-social-links { justify-content: flex-start !important; }
+        #home-social-links a { font-size: 0.56rem; }
+    }
     </style>
 </head>
 <body>
@@ -218,7 +355,7 @@
 
     <div class="container">
         <section id="home" class="section active">
-            <div class="stagger-item card-img-wrapper" style="aspect-ratio: 16/9; border: 3px solid var(--retro-red);">
+            <div class="stagger-item card-img-wrapper hero-frame">
                 <video src="video.mov" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover; opacity: 0.9;"></video>
             </div>
             <div class="stagger-item" style="margin-top: 24px; border: 2px dashed var(--retro-red); padding: 20px; background: rgba(0,0,0,0.5);">
@@ -306,7 +443,7 @@
         <section id="media" class="section">
             <h2 class="card-title media-cn stagger-item" style="text-align:center;">> 数字媒体作品 <</h2>
             <h2 class="card-title media-en stagger-item" style="display:none;text-align:center;">> Digital Media Works <</h2>
-            <div class="card-grid" style="grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));gap:32px;max-width:1200px;margin:0 auto;">
+            <div class="card-grid">
                 <div class="card stagger-item">
                     <div class="media-cover" style="cursor:pointer;"><img src="DA_video/cover/Screenshot 2025-11-08 at 10.14.39.png" alt="桔梗" loading="lazy" decoding="async"></div>
                     <div class="card-title media-cn">桔梗在燃烧 MV</div><div class="card-title media-en" style="display:none;">The Straw Burns MV</div>
