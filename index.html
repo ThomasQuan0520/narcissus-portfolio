@@ -336,7 +336,7 @@
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
     }
-    #ascii-canvas { opacity: .025; }
+    #ascii-canvas { opacity: .14; }
     .crt-overlay, #loading-overlay { display: none !important; }
 
     header {
@@ -623,6 +623,66 @@
         .lang-switcher { right: 12px; bottom: 12px; }
         #music-status { right: 12px !important; bottom: 66px !important; }
         footer { padding-top: 20px; }
+    }
+
+    /* Compose the desktop home view as a 16:9 landscape canvas. */
+    @media (min-width: 901px) {
+        header,
+        .container,
+        footer {
+            width: min(100%, calc(100svh * 1.7778), 1600px);
+            margin-inline: auto;
+        }
+        header { padding-top: clamp(20px, 3.2vh, 42px); }
+        .container {
+            min-height: max(500px, calc(100svh - 220px));
+            display: flex;
+            align-items: center;
+            padding-bottom: 24px;
+        }
+        #home.section.active {
+            width: 100%;
+            display: grid;
+            grid-template-columns: minmax(0, 1.45fr) minmax(300px, .8fr);
+            grid-template-rows: auto auto;
+            align-items: center;
+            column-gap: clamp(32px, 4.2vw, 72px);
+        }
+        #home > .hero-frame {
+            grid-column: 1;
+            grid-row: 1 / span 2;
+            max-width: none;
+            align-self: center;
+        }
+        #home > .home-intro {
+            grid-column: 2;
+            grid-row: 1;
+            display: block;
+            align-self: end;
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+        #home .home-intro h2 {
+            font-size: clamp(2rem, 3.5vw, 3.6rem) !important;
+        }
+        #home .home-intro-copy { margin-top: 20px; }
+        #home > #home-social-links {
+            grid-column: 2;
+            grid-row: 2;
+            align-self: start;
+            margin: 24px 0 0 !important;
+        }
+        #home-social-links > div {
+            flex-basis: 100%;
+            margin: 8px 0 0 !important;
+        }
+        footer { padding-inline: var(--page-gutter); }
+    }
+    @media (max-width: 900px) {
+        .container { display: block; min-height: 0; }
+        #home.section.active { display: block; }
+        #home > .home-intro { display: grid; }
     }
     </style>
 </head>
