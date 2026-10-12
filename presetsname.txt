@@ -1,0 +1,6 @@
+const trackerPresets = [
+            'Tracker_Presets/OLd_House.json',
+            'Tracker_Presets/Dark_TeCH.json',
+            'Tracker_Presets/Poster_PUNk.json',
+            'Tracker_Presets/Lofi_Beats.json',
+        ];
