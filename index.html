@@ -874,7 +874,9 @@
         target.classList.add('active');
         
         document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
-        if(event) event.currentTarget.classList.add('active');
+        const activeLink = event?.currentTarget || [...document.querySelectorAll('nav a')]
+            .find(link => link.getAttribute('onclick')?.includes(`'${id}'`));
+        activeLink?.classList.add('active');
 
         const items = target.querySelectorAll('.stagger-item');
         items.forEach(i => { i.classList.remove('stagger-run'); void i.offsetWidth; });
