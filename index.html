@@ -659,23 +659,33 @@
             grid-row: 1;
             display: block;
             align-self: end;
+            justify-self: end;
+            width: 100%;
             margin: 0;
             padding: 0;
             border: 0;
+            text-align: right;
         }
         #home .home-intro h2 {
             font-size: clamp(2rem, 3.5vw, 3.6rem) !important;
         }
         #home .home-intro-copy { margin-top: 20px; }
+        #home .home-intro-copy p {
+            margin-left: auto;
+            text-align: right;
+        }
         #home > #home-social-links {
             grid-column: 2;
             grid-row: 2;
             align-self: start;
+            justify-content: flex-end !important;
             margin: 24px 0 0 !important;
+            text-align: right;
         }
         #home-social-links > div {
             flex-basis: 100%;
             margin: 8px 0 0 !important;
+            text-align: right !important;
         }
         footer { padding-inline: var(--page-gutter); }
     }
