@@ -316,8 +316,8 @@
 
     /* Contemporary portfolio art direction */
     :root {
-        --retro-red: #ed725f;
-        --retro-bright-red: #ff9a83;
+        --retro-red: #e60000;
+        --retro-bright-red: #ff3347;
         --retro-black: #101112;
         --retro-dark: #191b1d;
         --retro-border: 1px solid rgba(255,255,255,.12);
@@ -467,8 +467,8 @@
     }
     #home-social-links a:hover {
         transform: none;
-        border-color: rgba(237,114,95,.6);
-        background: rgba(237,114,95,.1);
+        border-color: rgba(230,0,0,.65);
+        background: rgba(230,0,0,.12);
         box-shadow: none;
         color: #fff !important;
     }
@@ -894,7 +894,7 @@
             if (document.visibilityState === 'visible') {
                 ctx.fillStyle = 'rgba(5, 5, 5, 0.05)';
                 ctx.fillRect(0, 0, width, height);
-                ctx.fillStyle = '#d6002f';
+                ctx.fillStyle = '#e60000';
                 ctx.font = fontSize + 'px "Press Start 2P", monospace';
                 for (let i = 0; i < columns; i++) {
                     const text = chars.charAt(Math.floor(Math.random() * chars.length));
@@ -989,7 +989,7 @@
             let vid = document.createElement('video');
             vid.src = mediaList[idx].video; vid.controls = true; vid.loop = true; vid.volume = 0.5;
             Object.assign(vid.style, {
-                background:'#000', border:'4px solid #d6002f', boxShadow:'8px 8px 0px #000',
+                background:'#000', border:'4px solid #e60000', boxShadow:'8px 8px 0px #000',
                 maxWidth:'90vw', maxHeight:'80vh', width:'auto', height:'auto'
             });
             modal.appendChild(vid); document.body.appendChild(modal);
@@ -1024,7 +1024,7 @@
         let html = '';
         const songs = lang==='cn' ? data.cn.songs : data.en.songs;
         songs.forEach((song, i) => {
-            html += `<div style='margin-bottom:12px;display:flex;align-items:center; border-bottom: 1px dashed #d6002f; padding-bottom: 8px;'><span style='flex:1; font-size: 0.7rem;'>[TRK ${i+1}] ${song}</span><audio controls style='width:40%;height:25px;' src='audio/album${idx+1}_song${i+1}.mp3'></audio></div>`;
+            html += `<div style='margin-bottom:12px;display:flex;align-items:center; border-bottom: 1px dashed #e60000; padding-bottom: 8px;'><span style='flex:1; font-size: 0.7rem;'>[TRK ${i+1}] ${song}</span><audio controls style='width:40%;height:25px;' src='audio/album${idx+1}_song${i+1}.mp3'></audio></div>`;
         });
         document.getElementById('album-audio-list').innerHTML = html;
         
