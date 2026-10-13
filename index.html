@@ -731,7 +731,9 @@
     <div class="container">
         <section id="home" class="section active">
             <div class="stagger-item card-img-wrapper hero-frame">
-                <video src="video.mov" autoplay loop muted playsinline style="width:100%;height:100%;object-fit:cover; opacity: 0.9;"></video>
+                <video autoplay loop muted playsinline webkit-playsinline preload="auto" style="width:100%;height:100%;object-fit:cover; opacity: 0.9;">
+                    <source src="video.mp4" type="video/mp4">
+                </video>
             </div>
             <div class="stagger-item home-intro">
                 <div class="home-intro-title">
@@ -928,6 +930,22 @@
         const overlay = document.getElementById('loading-overlay');
         const bar = document.getElementById('loading-bar');
         const percent = document.getElementById('loading-percent');
+        const heroVideo = document.querySelector('#home .hero-frame video');
+        if (heroVideo) {
+            heroVideo.muted = true;
+            heroVideo.defaultMuted = true;
+            heroVideo.playsInline = true;
+            const startHeroVideo = () => {
+                const playback = heroVideo.play();
+                if (playback?.catch) playback.catch(() => {});
+            };
+            heroVideo.addEventListener('canplay', startHeroVideo, { once: true });
+            window.addEventListener('pageshow', startHeroVideo);
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) startHeroVideo();
+            });
+            if (heroVideo.readyState >= 3) startHeroVideo();
+        }
         bar.textContent = '||||||||||||||||||||';
         percent.textContent = '100%';
         setTimeout(() => {
